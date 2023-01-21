@@ -45,5 +45,6 @@ By using the New York Times API, we can parse information to *only* provide arti
 <details>
   <summary>Exploratory Data Analysis 🔭🔬📊</summary>
   
+## *Exploratory Data Analysis 🔭🔬📊*
   
 </details>
