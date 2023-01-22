@@ -35,13 +35,20 @@ print("Data returned: ")
 print(r.json()['response']['docs'])
   
   ```
-By using the New York Times API, we can search for articles from January 1st to the end of Quarter 1 2023 in order to effectively gain a glimpse into the major news headlines that show the health of the market and the financial sector. The next step to present our data is to begin to parse and clean this data in order to give readers a cleaner, structured, and more organized compisition of articles. The next step will require the use of "Pandas" in order to clean up this data and present an appropriate format to our readers.
+By using the New York Times API, we can search for articles from January 1st to the end of Quarter 1 2023 in order to effectively gain a glimpse into the major news headlines that show the health of the market and the financial sector. The next step to present our data is to begin to parse and clean this data in order to give readers a cleaner, structured, and more organized compisition of articles. The next step will require the use of "Pandas" in order to clean up this data and present an appropriate format to our readers, as the response generated a mass of various text that will need to be parsed.
   
 ### *Using "Pandas" 🐼 to Structure and Clean our Data* 
   
 By using the New York Times API, we can parse information to *only* provide articles on the **S&P 500 Index** as well as various other supporting articles that effect the perfomance of either the index or the market as a whole. Other queries include **markets, economy, and central banking** in which we are able to analyze some of the factors that can effect the perfomance of the market. Many equities can be affected by not only internal factors but also external ones, requiring the use of these queries. By parsing information for these queries, we are able to provide the readers with a more broader macroeconomic context, as policies from all over the world can affect the economy as a whole. The overall theme here is that the market has **many** variables that can affect perfomance **daily**.
   
-*insert code using pandas to structure and clean data*
+ ```js
+  import pandas as pd
+df = pd.json_normalize(r.json()['response']['docs'])
+  df
+  
+  ```
+  
+By using "Pandas" 🐼, we are able to display the data into a chart, allowing for a more cleaner and accesible method to viewing the articles pulled that match our query. Now that the article are more organized, we must now convert this data into a CSV file, which will allow us to save our data into a table structured format.
   
 </details>
 
