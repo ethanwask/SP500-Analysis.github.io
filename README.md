@@ -54,7 +54,7 @@ By using "Pandas" 🐼, we are able to display the data into a chart, allowing f
   
   *insert code and images for VSCode*
   
-### *Webscraping SlickCharts for S&P 500 Index Performance*
+### *Webscraping SlickCharts 📊 for S&P 500 Index Performance 🏋️*
 
 Now that relevant articles are pulled from the NYT API, we must now find the relevant data containing company name, ticker symbol, weight (market capitalization), current price, change in price from day prior, and finally the percentage change in price. To do so, we will be webscraping SlickCharts for data on the S&P 500 Index. To do so, we will need to use a combination of BeautifulSoup 🥣 (which parses the data we want), Pandas 🐼 (which structures and organizes this data to be more streamline), and also Cloudscraper ☁️ (in order to bypass cloudfare's "anti-bot" page). By utilizing these three components, we are able to present this data within a table, organized for our readers to examine.
 
