@@ -54,6 +54,46 @@ By using "Pandas" 🐼, we are able to display the data into a chart, allowing f
   
   *insert code and images for VSCode*
   
+### *Webscraping SlickCharts for S&P 500 Index Performance*
+
+Now that relevant articles are pulled from the NYT API, we must now find the relevant data containing company name, ticker symbol, weight (market capitalization), current price, change in price from day prior, and finally the percentage change in price. To do so, we will be webscraping SlickCharts for data on the S&P 500 Index. To do so, we will need to use a combination of BeautifulSoup 🥣 (which parses the data we want), Pandas 🐼 (which structures and organizes this data to be more streamline), and also Cloudscraper ☁️ (in order to bypass cloudfare's "anti-bot" page). By utilizing these three components, we are able to present this data within a table, organized for our readers to examine.
+
+```js
+from bs4 import BeautifulSoup
+import pandas as pd
+import cloudscraper
+
+url = 'https://www.slickcharts.com/sp500'
+scraper = cloudscraper.create_scraper(browser = 'chrome') # you can try 'firefox' here too?
+page = scraper.get(url).text  # get the raw html text
+soup = BeautifulSoup(page, 'html.parser') # convert html text to BeautifulSoup object
+
+table1 = soup.find('table', class_='table-borderless') # get the first table
+table1_head = table1.find_all('th') # isolate the head since this has the column headers we want
+table1_body = table1.find('tbody') # isolate table body since this has the data aka "guts"
+
+# Get headers of table (i.e., #, Company, Symbol, etc)
+headers = []
+for i in table1_head:
+    # extract just the value using .string (i.e., Company, Symbol, etc) and clean it up
+    headers.append(i.string.text.strip())
+
+# Get the "guts" aka all data 
+all_data = []  # set up a list where we'll store our final data
+rows = table1_body.find_all('tr') # get all the rows first, in each row there will be data
+for row in rows:  # loop through each row
+    cols = row.find_all('td') # in the given row, find the data we'll need
+    cols = [ele.text.strip() for ele in cols] # extract the data for the given row and clean it up
+    all_data.append([ele for ele in cols]) # add the current data to our python list called "all_data"
+
+# Print everything out
+print(headers)
+for item in all_data[:10]: # [:10] means go through the first 10 items in the list, can change to 20, etc
+    print(item)
+    
+   ```
+By combining these elements, we are able to pull all relevant data from the website in order to give our readers a "snapshot" of the health of the market, as the S&P 500 Index holds a large foothold and influence over the global markets. Typically when the S&P 500 Index underperforms, the market as a whole tends to follow the same trends, as most of the financial markets are driven by behavior (either bullish or bearish). 
+
 </details>
 
 <details>
