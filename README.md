@@ -58,6 +58,14 @@ By using "Pandas" 🐼, we are able to display the data into a chart, allowing f
 
 Now that relevant articles are pulled from the NYT API, we must now find the relevant data containing company name, ticker symbol, weight (market capitalization), current price, change in price from day prior, and finally the percentage change in price. To do so, we will be webscraping SlickCharts for data on the S&P 500 Index. To do so, we will need to use a combination of BeautifulSoup 🥣 (which parses the data we want), Pandas 🐼 (which structures and organizes this data to be more streamline), and also Cloudscraper ☁️ (in order to bypass cloudfare's "anti-bot" page). By utilizing these three components, we are able to present this data within a table, organized for our readers to examine.
 
+While writing the code, we ran into an issue in which SlickChart's was detecting our webscraping as a bot. In order to bypass Cloudfare's bot detection, I used a tool called Cloudscraper ☁️, in which it bypasses this bot detection and is able to run the script and pull the relevant data ot be analyzed. By opening up the terminal and typing:
+
+```js
+pip install cloudscraper
+
+ ```
+Once Cloudscraper ☁️ is installed, we are ready to pull data!
+
 ```js
 from bs4 import BeautifulSoup
 import pandas as pd
