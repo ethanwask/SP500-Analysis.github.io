@@ -4,7 +4,7 @@
   <summary>Motivation 📈🚀</summary>
 
 ## *Motivation* 📈🚀
-The financial sector is an integral part of the economy and it is what drives the global capital markets. Having such an influence on the economy of not just individual countries, but the world collectively 🌎, the financial sector is what brings together most countries regardless of politics, beliefs, or background. In order to better understand why the economy is the way it is, we wanted to look deeper into some of the factors that are driving the world markets 💸. Through analyzing the Standard and Poor's 500 (S&P 500) Index, we would be able to give a snapshot of the current market as this index provides the top 500 U.S.-listed equities by market capitalization📈. Given these large-scale corporations, we will be able to provide our audience with a summary of the overall health of the economy and financial sector. Especially as of now, this is extremely relevant as many large financial institutions and global economies are bracing for what could be the next possible "large-scale" recession📉. This information could help our readers 📚 understand why the market is performing the way it is and potentially what to expect in the coming months📆.
+The financial sector is an integral part of the economy and it is what drives the global capital markets. Having such an influence on the economy of not just individual countries, but the world collectively, the financial sector is what brings together most countries regardless of politics, beliefs, or background. In order to better understand why the economy is the way it is, we wanted to look deeper into some of the factors that are driving the world markets. Through analyzing the Standard and Poor's 500 (S&P 500) Index, we would be able to give a snapshot of the current market as this index provides the top 500 U.S.-listed equities by market capitalization. Given these large-scale corporations, we will be able to provide our audience with a summary of the overall health of the economy and financial sector. Especially as of now, this is extremely relevant as many large financial institutions and global economies are bracing for what could be the next possible "large-scale" recession. This information could help our readers understand why the market is performing the way it is and potentially what to expect in the coming months.
   
 </details>
 
@@ -108,5 +108,99 @@ By combining these elements, we are able to pull all relevant data from the webs
   <summary>Exploratory Data Analysis 🔭🔬📊</summary>
   
 ## *Exploratory Data Analysis 🔭🔬📊*
+  
+### *Further Analysis of the S&P 500 Index*
+  
+Now that we have a general understanding of the equities that make up the S&P 500 Index, we wanted to show our readers the various sectors this index covers in order to provide them with an additional understanding of the sectors that are performing well and those that are beginning to falter. By providing information regarding the sectors, we are able to show how some of the supplemental articles regarding geo-political events may influence the markets, more specifically these sectors. In order to find the sectors that makeup the index, we must once again webscrape, however this time we will be using Wikipedia, as the other resources provided fail to state the sectors that form the S&P 500 Index. We are abel to pull this ionformation by opening the terminal and typing:
+  
+```js
+  
+  # import the required libraries
+import requests
+from bs4 import BeautifulSoup
+url = 'https://en.wikipedia.org/wiki/List_of_S%26P_500_companies'
+# sending a request to the site
+page = requests.get(url)
+# parsing the content
+soup = BeautifulSoup(page.content, 'html.parser')
+table = soup.find('table', {'class': 'wikitable sortable'})
+  
+  ```
+  
+Now that we pulled the required information, we need to create a DataFrame by utilizing Pandas 🐼, in which we will type into the terminal:
+  
+  ```js
+  
+  import pandas as pd
+# Extract data from wikipedia 
+rows = table.find_all('tr')
+data_list = []
+for row in rows:
+    data = row.find_all('td')
+    try:
+        company = data[0].find('a').get_text()
+        sector = data[3].get_text()
+        data_list.append([company, sector])
+    except:
+        pass
+
+# Create DataFrame
+df = pd.DataFrame(data_list, columns=['Company', 'Sector'])
+print(df)
+
+   ```
+  
+  Once we input and run the code, a DataFrame is produced in which each individual equity's sector is defined and structured within a table. Now, we want to find the various sector names that makeup the S&P, rather than search the entire index for this information. We will do so by typing the following within the terminal:
+  
+   ```js
+  df['Sector'].unique()
+   ```
+Now we are able to see the individual sectors that makeup the index, rather than searching through all of the equities. Knowing the individual sectors is important to us, as we want to be able to examine how different macroeconomic variables within the news may affect the health of not just the economy as a whole, but potentially even just sectors. For example, new healthcare regulations may affect the health sector or growing anti-trust laws may affect big tech. This information is vital for us in order to give our readers resources to determine the overall state of the economy/sectors. 
+  
+Next, we want to be able to identify the number of equities within each sector, as this will help us determine top perfomring sectors (those with the highest nuber of equities in the index) or the lowest perfroming sectors (those with the least number of equities in the index). We will do so by typing the following code in the terminal:
+  
+   ```js
+  # Group data by sector and count the number of firms in each sector
+sector_count = df.groupby('Sector').size()
+# Convert this dataframe to a dictionary
+sector_count = sector_count.to_dict()
+#Counting the number of firms per sector
+sector_count = df['Sector'].value_counts()
+sector_count
+  ```
+  
+This code will give us the amount of equities within the exchange in each individual sector, which will help us find what we were looking for in the paragraph above. 
+  
+ ### *Structuring Data Visualizations Using Madplotlib* 📊
+ 
+Although we have all relevant information, we still need to provide our readers with visualizations that will display this infomation. Visualizations are crucial to our data analysis as they provide an avenue to analyze data in a clean and concise manner that is able to quickly show patterns or correlations between variables. In order to provide our readers with these visualizations, we will utilize Madplotlib, a plotting library used to analyze data extracted using Python 🐍. First, we will be creating a bar chart using Madplotlib, in which we will write the following code within the terminal:
+  
+  ```js
+  import matplotlib.pyplot as plt
+sector_count.plot(kind='bar')
+plt.xlabel('Sector')
+plt.ylabel('Number of Firms')
+plt.title('Number of Firms per Sector')
+plt.show()
+   ```
+  
+By utilizing this code, we are able to output a bar chart that looks like this:
+  
+  *insert picture of table*
+  
+Alternatively, we can show the proportion of the equities that makeup the S&P 500 Index by using Madplotlib, specifially their pie chart 🥧📊 feature, in which we write the following code within the terminal: 
+  
+  ```js
+  import matplotlib.pyplot as plt
+
+plt.pie(sector_count, labels=sector_count.index, autopct='%1.1f%%')
+plt.title('Percentage of Firms per Sector')
+plt.show()
+   ```
+By using Madpoltlib we are able to output a pie chart that represents our data that looks like this:
+  
+  *insert pie chart*
+  
+
   
 </details>
