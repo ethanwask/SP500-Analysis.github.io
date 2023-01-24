@@ -186,7 +186,8 @@ plt.show()
   
 By utilizing this code, we are able to output a bar chart that looks like this:
   
-  *insert picture of table*
+  ![S P Bar Graph Python](https://user-images.githubusercontent.com/118006806/214340026-4fbbc2f0-e094-45e7-84d1-74b7d371ea03.png)
+
   
 Alternatively, we can show the proportion of the equities that makeup the S&P 500 Index by using Madplotlib, specifially their pie chart 🥧📊 feature, in which we write the following code within the terminal: 
   
@@ -199,8 +200,8 @@ plt.show()
    ```
 By using Madpoltlib we are able to output a pie chart that represents our data that looks like this:
   
-  *insert pie chart*
-  
+  ![S P Pie Chart Python](https://user-images.githubusercontent.com/118006806/214339815-86e2a215-ccaa-4dca-a356-fa6470ee7d49.png)
 
+After seeing the proportion of equities that makeup the various sectors within the index, it is now clear that five sectors dominate the market, which are: technology, industrials, financials, healthcare, and consumer discretionary. This gives us a new persepctive when understanding the market, as due to having more equtiies with higher market capitalization within these five sectors, it is clear that the current macroeconomic environment is allowing for these sectors to grow. Now, with this information, when seeing a specific ticker associated with the S&P 500 Index within the NYT Articles that were webscraped, there can be an understanding of the current market share that the equity is within. 
   
 </details>
