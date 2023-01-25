@@ -228,5 +228,73 @@ By using Madpoltlib we are able to output a pie chart that represents our data t
   ![S P Pie Chart Python](https://user-images.githubusercontent.com/118006806/214339815-86e2a215-ccaa-4dca-a356-fa6470ee7d49.png)
 
 After seeing the proportion of equities that makeup the various sectors within the index, it is now clear that five sectors dominate the market, which are: technology, industrials, financials, healthcare, and consumer discretionary. This gives us a new persepctive when understanding the market, as due to having more equtiies with higher market capitalization within these five sectors, it is clear that the current macroeconomic environment is allowing for these sectors to grow. Now, with this information, when seeing a specific ticker associated with the S&P 500 Index within the NYT Articles that were webscraped, there can be an understanding of the current market share that the equity is within. 
+
+### *Analyzing the Top 10 Firms*
+
+Now that we understand the general makeup of the S&P 500 Index, we want to be able to show all relevant information pertaining to the top 10 equities in order to fully understand if there is a general trend showing that there is in fact, a top performing sector. To do so, we will examine the top 10 equities within the index (the firms with the largest market capitalization). 
+
+By using the existing dataframe we formed using Pandas 🐼, we will now look for *only* the top 10 equities within the index. To do so, we will type the following within the terminal:
+
+```js
+#Change the Price and Change values from an object to a numeric datatype
+df['Price'] = pd.to_numeric(df['Price'], errors='coerce')
+df['Chg'] = pd.to_numeric(df['Chg'], errors='coerce')
+
+#Remove the Percentage Symbol and Brackets from the percentage change column
+df['% Chg'] = df['% Chg'].str.replace('%', '')
+df['% Chg'] = df['% Chg'].str.replace('(', '')
+df['% Chg'] = df['% Chg'].str.replace(')', '')
+
+#Sort the firms by price in descending order
+df.sort_values("Price", ascending=False, inplace=True)
+
+#Print the data for the top 10 firms
+print(df.head(10))
+
+#Create a new dataframe with the data for just the top 10 firms
+df_10 = df.head(10)
+
+print(df_10)
+
+#checking for missing values with new dataframe
+df_10.isna().sum()
+```
+
+By running the following code, we are able to convert the data from the previous dataframe into numeric data and sort the firms by price in descending order in order to give us a new dataframe containing just the top 10 firms. This new dataframe will allow us to look even further into the top performing firms and hopefully draw connections to which sectors may be outperforming others. 
+
+#### *Changes in Prices from the Top Firms*
+
+In order to gauge the health of the economy, analyzing the discrepencies in prices is vital to be able to understand how volatile the market is and if there are a significant amount of firms exhibiting decreases in value, there is some indication that the market is eithe underperfomring for that day, or if it extends for a brief period, a recession may be looming. 
+
+To observe this, we must find the current prices of the top 10 firms and be able to visualize this data through graphs. To do so, we will once again be using Madplotlib to visually display our findings and type the following within the terminal: 
+
+```js
+# Create a list from the price and symbol column in the DataFrame
+column_name = 'Price'
+column_list_price = df_10[column_name].tolist()
+top_firm_price = column_list_price[:10]
+print(top_firm_price)
+[799.2, 740.18, 734.3, 716.68, 695.73, 581.2, 574.26, 567.53, 502.62, 502.12]
+column_name = 'Symbol'
+column_list_symbol = df_10[column_name].tolist()
+top_firm_symbol = column_list_symbol[:10]
+print(top_firm_symbol)
+['ORLY', 'REGN', 'BLK', 'EQIX', 'TDG', 'AVGO', 'TMO', 'GWW', 'HUM', 'MSCI']
+#Invert the list, so prices are in ascending order
+top_price = top_firm_price[::-1]
+#Invert the firm's symbols to match their prices
+top_firms = top_firm_symbol[::-1]
+# Create a bar chart displaying the prices for the Top Firms
+plt.bar(top_firms,top_price, color='red')
+plt.xlabel('Firms')
+plt.ylabel('Price')
+plt.title('Prices of the shares of the Top Firms')
+```
+
+By using Madplotlib, we are able to create a bar graph displaying the prices of the top 10 firms which looks like:
+
+![Prices of the Shares of the Top Firms](https://user-images.githubusercontent.com/118006806/214691598-03a24748-7372-483a-89a9-0b662cbbbc57.png)
+
+
   
 </details>
