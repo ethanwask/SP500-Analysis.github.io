@@ -26,6 +26,14 @@ The financial sector is an integral part of the economy and it is what drives th
 </details>
 
 <details>
+  <summary>Justification ⚖️</summary>
+  
+Our project is relevant to both economists, investors, and everyday citizens, as the possibility of a recession is able to impact people on all levels throughout the economy. By giving readers a central hub where articles are able to be drawn while also providing real-time data on the composition and perfomance of the index, we will be able to provide resources to our readers in which the events leading up to either a recession or slow-down will be observable and understood. When trying to understand why the economy is performing the way it is, economists are interested in geopolitical variables and monetary/fiscal policy changes, which are provided through the NYT Articles API. Additionally, both economists and investors will be interested in the perfomance of the S&P 500 Index, as this index provides a reliable gauge on the health of the economy. 
+  
+</details>
+
+
+<details>
   <summary>Data 📊</summary>
 
 ## *Data* 📊
