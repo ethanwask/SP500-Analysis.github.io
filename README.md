@@ -295,6 +295,50 @@ By using Madplotlib, we are able to create a bar graph displaying the prices of 
 
 ![Prices of the Shares of the Top Firms](https://user-images.githubusercontent.com/118006806/214691598-03a24748-7372-483a-89a9-0b662cbbbc57.png)
 
+Now that we know the top 10 firms within the index as well as their prices, we now want to be able to observe any price discrepencies these equities may have experienced, as with this information we will be able to see whether or not these firms are underperforming even as the top performers. 
+  
+To structure this data into a chart, we will type the following into the terminal: 
+  
+```js
+  #Create a list from the price change column
+column_name = 'Chg'
+column_list_chg = df_10[column_name].tolist()
+top_firm_chg = (column_list_chg[:10])[::-1]
+print(top_firm_chg)
+[-17.72, 2.27, -3.31, -6.46, -3.83, 1.48, -2.94, -17.77, 12.71, 0.11]
+#Make a bar chart showing the price change for each firm
+plt.bar(top_firms,top_firm_chg)
+plt.xlabel('Firms')
+plt.ylabel('Price Change')
+plt.title('Price Changes of the shares of the Top Firms')
+  ```
+
+By changing the axis labels and analyzing the price changes, we are able to see any discrepencies in prices with these firms, which looks like:
+  
+  ![Price change of firm](https://user-images.githubusercontent.com/118006806/214693008-9c395078-bb6f-448c-93d4-3a14e7e28f17.png)
+
+Although we may be able to see price changes, percent changes will be able to effectively display these discrepencies relative to the equities' existing prior price point. This will help us gauge the extent to which the proportion of it's value has either *fallen* or *risen*. 
+  
+To find this, we will once again use Madplotlib to create a bar chart by writing the following within the terminal:
+  
+  ```js
+ #Make a list using the percentage change column
+column_name = '% Chg'
+column_list_chg = df_10[column_name].tolist()
+top_firm_per_chg = (column_list_chg[:10])[::-1]
+print(top_firm_per_chg)
+['-3.41', '0.45', '-0.58', '-1.11', '-0.66', '0.21', '-0.41', '-2.36', '1.75', '0.01']
+#Make a bar chart for the percentage change in the price of each firm
+plt.bar(top_firms,top_firm_chg,color='green')
+plt.xlabel('Firms')
+plt.ylabel('Percentage Change')
+plt.title('Percentage Change in the Price of the shares of the Top Firms')
+  ```
+  
+From this we can now be able to effectively show the discrepencies in prices relative to the firms prior price. 
+  
+  ![Price change of firm %](https://user-images.githubusercontent.com/118006806/214695086-87e6a5e2-ac6b-4907-8723-48a17643c983.png)
+
 
   
 </details>
