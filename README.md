@@ -335,10 +335,14 @@ plt.ylabel('Percentage Change')
 plt.title('Percentage Change in the Price of the shares of the Top Firms')
   ```
   
-From this we can now be able to effectively show the discrepencies in prices relative to the firms prior price. 
+Which outputs: 
   
   ![Price change of firm %](https://user-images.githubusercontent.com/118006806/214695086-87e6a5e2-ac6b-4907-8723-48a17643c983.png)
 
-
+From this we can now be able to effectively show the discrepencies in prices relative to the firms prior price. Through this visualization, it is clear that there is some slowdown or even decrease in growth, as the majority of these firms are exhibiting negative movements in prices. 
+  
+#### *Sector Composition of the Top 10 Firms*
+  
+For investors and economists, understanding the perfomance of different sectors is crucial to understanding why the economy and markets are behaving how they are. For example, the price of industrial equities may be performing well at the end of the COVID-19 Pandemic due to the supply chain issues, thus driving prices up. Additionally, the war in Ukraine may be putting pressure on the energy sector as there is a very limited supply of natural gasses, thus increasing the prices of equities within the energy sector. To be able to observe similar effects within the market, we will be looking at the composition of the top 10 equities within the S&P 500, as we may be able to draw the same conclusions with the sectors within this dataset. 
   
 </details>
