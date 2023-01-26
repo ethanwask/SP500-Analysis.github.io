@@ -16,7 +16,7 @@
 The Standard and Poor's 500 Index is market-capitalization-weighted index of the 500 largest publicly traded U.S. companies. In essence, this weighting system measures companies through multiplying the equity price with shares outstanding. This weighting system is able to provide a "valuation" of these companies, thus putting the 500 most valuable publicly traded companies within the Index. Additionally, the Index is dynamic - meaning it's composition is  *always* changing alongside the market. Some companies may lose enough value to fall out of the index while others may increase their value enough to make their way in. However, it is widely believed within the financial sector that this index is one of the best gauges of the health of the economy due to it's depth and weighting. Because of it's ability to gauge the health of the economy, we found the S&P 500 index to be an important resource to investors and economists when determining the state of the economy. 
 
 </details>
-  <Summary> The S&P Index Sectors,/summary>
+  <Summary> The S&P Index Sectors</summary>
   
   ## *Sectors*
   The S&P 500 is made up of:
