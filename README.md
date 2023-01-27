@@ -362,6 +362,92 @@ From this we can now be able to effectively show the discrepencies in prices rel
   
 #### *Sector Composition of the Top 10 Firms*
   
-For investors and economists, understanding the perfomance of different sectors is crucial to understanding why the economy and markets are behaving how they are. For example, the price of industrial equities may be performing well at the end of the COVID-19 Pandemic due to the supply chain issues, thus driving prices up. Additionally, the war in Ukraine may be putting pressure on the energy sector as there is a very limited supply of natural gasses, thus increasing the prices of equities within the energy sector. To be able to observe similar effects within the market, we will be looking at the composition of the top 10 equities within the S&P 500, as we may be able to draw the same conclusions with the sectors within this dataset. 
+For investors and economists, understanding the perfomance of different sectors is crucial to understanding why the economy and markets are behaving how they are. For example, the price of industrial equities may be performing well at the end of the COVID-19 Pandemic due to the supply chain issues, thus driving prices up. Additionally, the war in Ukraine may be putting pressure on the energy sector as there is a very limited supply of natural gasses, thus increasing the prices of equities within the energy sector. To be able to observe similar effects within the market, we will be looking at the composition of the top 10, followed by the top 20 equities within the S&P 500, as we may be able to draw the same conclusions with the sectors within this dataset. 
+  
+To find this, we must once again create a new dataframe, in which the composition of the top 10 equities are displayed within a bar 📊 and pie chart 🥧. Through these charts, we will be able to visualize the varying performances of each sector, as the sectors with the most equities within the top 10 will be seen as the top performing sectors, and the sectors with the least equities from the top 10 will be seen as "underperfomers". To form these charts, we will input the following within the terminal:
+  
+   ```js
+  symbols = top_firm_symbol
+#make a dataframe containing the sector information for the top 10 firms
+import pandas as pd
+from yahooquery import Ticker
+
+
+tickers = Ticker(symbols, asynchronous=True)
+
+datasi = tickers.get_modules("summaryProfile quoteType")
+dfsi = pd.DataFrame.from_dict(datasi).T
+dataframes = [pd.json_normalize([x for x in dfsi[module] if isinstance(x, dict)]) for
+module in ['summaryProfile', 'quoteType']]
+
+dfsi = pd.concat(dataframes, axis=1)
+
+dfsi = dfsi.set_index('symbol')
+dfsi = dfsi.loc[symbols]
+
+print(dfsi[['industry', 'sector']])
+   ```
+
+This will create a new dataframe and segregate the data into just the top 10 equities and list the sector composition, which appears as:
+  
+  ```js
+                           industry               sector
+symbol                                                      
+ORLY                    Specialty Retail   Consumer Cyclical
+REGN                       Biotechnology          Healthcare
+BLK                     Asset Management  Financial Services
+EQIX                      REIT—Specialty         Real Estate
+TDG                  Aerospace & Defense         Industrials
+AVGO                      Semiconductors          Technology
+TMO               Diagnostics & Research          Healthcare
+GWW              Industrial Distribution         Industrials
+HUM                     Healthcare Plans          Healthcare
+MSCI    Financial Data & Stock Exchanges  Financial Services
+   ```
+  
+Now that a dataframe is created, we want to be able to organize this information into a table where it is easy to determine which sectors have the highest proportion of the top 10 equities, however we must first put this data into numerical form, where we are able to graph this information. To do so, we will try and find the number of equities within each sector by writing:
+  
+  ```js
+  #Find how many firms are in each sector
+dfsi.groupby('sector').size()
+  ```
+Which will give us an output of:
+  
+   ```js
+  sector
+Consumer Cyclical     1
+Financial Services    2
+Healthcare            3
+Industrials           2
+Real Estate           1
+Technology            1
+dtype: int64
+  ```
+Now that we have numerical data, we are able to create the charts and structure our data into visualizations. By using Madplotlib again, we will be able to achieve this by writing the following within the terminal:
+  
+  ```js
+  #Plot this data in a pie chart and a bar chart
+dfsi.groupby('sector').size().plot(kind='bar')
+plt.title("Number of Firms Per Sector, among the top 10 firms")
+plt.show()
+dfsi.groupby('sector').size().plot.pie(autopct='%.2f', figsize=(5,5))
+plt.title("Proportion of sectors among the top 10 Firms")
+  ```
+  
+Which will give us an output of:
+  
+![bar chart of top 10](https://user-images.githubusercontent.com/118006806/215081530-b9ccb90b-2166-49f7-8f4b-0598841a7823.png)
+
+![pie chart of top 10](https://user-images.githubusercontent.com/118006806/215081559-3c0135ee-4323-4152-9c6f-69d2b3499075.png)
+
+From this data we can see somewhat of a normal distrubution curve, in which financial services, healthcare, and industrials sectors appear to make up the majority of the index. Although this may show that the majority of these equities are within these three sectors, the sample size proves to be a challenge as 10 equities trying to represent 11 sectors is not an optimal method of trying to find performance. In order to see a more accurate representation, we will increase the sample size to 20, as we do not want to include a majority of the index in order to ensure that we analyze the *top* performers. We will run the same code, however now we will replace the numerical value of "10" for "20" and ger the following outputs:
+  
+  ![bar chart top 20](https://user-images.githubusercontent.com/118006806/215083365-163cfa58-24ed-4774-9eb2-0a36b665e8c0.png)
+
+  ![pie chart top 20](https://user-images.githubusercontent.com/118006806/215083407-31964905-f56f-4792-83fc-9edd21c3990d.png)
+
+By increasing the sample size, there is now a clear distinction in datasets, as similar to the dataset prior, both healthcare and industrials sectors contain more equities within the top 20 than any other sector. Additionally, we can see which sectors are underperfomring as real estate, technology, and consumer discretionary seem to be lagging behind the rest. This may suggests that there are currently issues ongoing within the market that are affecting these sectors, which we will dive into next. 
+
+  
   
 </details>
