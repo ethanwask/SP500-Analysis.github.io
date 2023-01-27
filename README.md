@@ -453,6 +453,10 @@ By increasing the sample size, there is now a clear distinction in datasets, as 
 <details>
   <summary>Exlaining the Factors Behind our Findings 🤔❔</summary>
   
+### *Top Performing Sectors*
+After observing the data, it is clear that healthcare and industrials are performing well. However, why is this? Healthcare has historically been dominant within the index, as within the U.S., prices are exorbitantly high and there will constantly be a need for innovation in treatment. On average, Americans spend over $4.3 trillion a year on healthcare, which is roughly $12,000 per person per year within the U.S. (Centers for Medicare and Medicaid Services). Due to historic trends, this perfomrance is no surprise. For industrials, however, this is a much different story. Coming out of the pandemic, the U.S., including the vast majority ofthe world, faced supply-chain issues. With a shortage of truck drivers, bottleneck issues, and a high demand for goods used in construction caused the prices of these goods (including the valie of the corporations themselves) to skyrocket. Although suply-chain issues have cooled, issues are still prevelant and driving prices to skyrocket. 
   
+### *Bottom Performing Sectors*
+On the other hand, real estate has taken a severe hit this year following the Federal Reserve's decision to increase interest rates to historic highs, as we have been seeing increases reaching increments as high as 0.75% per month, to where the Fed Funds Rate is 4.33%. The Fed Funds Rate is symbolic within the market, as an increase in interest rates from the Fed signal a looming recession and more money being taken out of the money supply. One of the ways in which money is being taken out of the money supply is through martgage rates, in which the 30-year fixed-mortgage rate is 6.45%, the highest since the 2008 global financial crisis. This is causing demand for the housing and real-estate market to fall sharply, affecting the value of the equities within the real-estate sector. 
   
 </details>
