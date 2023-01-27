@@ -18,7 +18,7 @@ The Standard and Poor's 500 Index is market-capitalization-weighted index of the
 </details>
 
 <details>
-  <Summary>The S&P 500 Index Sectors📊</summary>
+  <Summary>The S&P 500 Index Sectors 🔨💰💡</summary>
   
   ## *Sectors Explained*
   The S&P 500 is made up of:
