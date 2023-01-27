@@ -10,7 +10,7 @@
 </details>
 
 <details>
-  <summary>The S&P 500 Index Explained</summary>
+  <summary>The S&P 500 Index Explained 🔑</summary>
 
 ## *The S&P 500 Index Explained*
 The Standard and Poor's 500 Index is market-capitalization-weighted index of the 500 largest publicly traded U.S. companies. In essence, this weighting system measures companies through multiplying the equity price with shares outstanding. This weighting system is able to provide a "valuation" of these companies, thus putting the 500 most valuable publicly traded companies within the Index. Additionally, the Index is dynamic - meaning it's composition is  *always* changing alongside the market. Some companies may lose enough value to fall out of the index while others may increase their value enough to make their way in. However, it is widely believed within the financial sector that this index is one of the best gauges of the health of the economy due to it's depth and weighting. This depth can be seen through it's representation of various sectors which includes: technology, healthcare, financials, real estate, energy, materials, consumer discretionary, industrials, utilities, consumer staples, and commuications. Because of it's ability to gauge the health of the economy, we found the S&P 500 index to be an important resource to investors and economists when determining the state of the economy. 
@@ -448,6 +448,11 @@ From this data we can see somewhat of a normal distrubution curve, in which fina
 
 By increasing the sample size, there is now a clear distinction in datasets, as similar to the dataset prior, both healthcare and industrials sectors contain more equities within the top 20 than any other sector. Additionally, we can see which sectors are underperfomring as real estate, technology, and consumer discretionary seem to be lagging behind the rest. This may suggests that there are currently issues ongoing within the market that are affecting these sectors, which we will dive into next. 
 
+</details>
+
+<details>
+  <summary>Exlaining the Factors Behind our Findings 🤔❔</summary>
+  
   
   
 </details>
