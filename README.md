@@ -21,18 +21,29 @@ The Standard and Poor's 500 Index is market-capitalization-weighted index of the
   <Summary>The S&P 500 Index Sectors 🔨💰💡</summary>
   
   ## *Sectors Explained*
-  The S&P 500 is made up of:
-  1. Technology 
-  2. Healthcare
-  3. Financials 
-  4. Real Estate
-  5. Energy
-  6. Materials 
-  7. Consumer Discretionary 
-  8. Industrials 
-  9. Utilities
-  10. Consumer Staples
-  11. Communications 
+  The S&P 500 Index is made up of the following 11 sectors:
+  1. Technology 🖥️
+  : Includes the development or manufacturing of technology-related goods and services. This can span from software services to hardware such as a laptop or gaming console.
+  2. Healthcare 🏥
+  : Includes pharmaceutical companies, health-care related services, or companies who create medical supplies and equipment. It is important to note that typically these companies' performance are not contingent on the perfromance of the economy as a whole. Typically, healthcare outperforms other sectors during times in which a recession is looming. 
+  3. Financials 🏦
+  : Includes a wide variety of industries including banks, investing services, credit unions, mortgage companies, credit card compmanies, and insurance companies. The financials sector is vast, as there is much variety in the services provided within the market. 
+  4. Real Estate 🏘️
+  : Includes realty agencies, property management companies, and real-estate investment trusts (REITs). This sector is typically not affected by the perfomance of stocks within the market, however they are incredibly sensitive to increases in interest rates. As interest rates rise, consumption and demand for real-estate typically falls, thus decreasing the sectors performance. 
+  5. Energy ⚡
+  : Includes the production and distribution of energy. This can span from solar power, electricity, gas, or even off-shore wind turbines. This sector is *very* sensitive to economic and supply-demand movements, as when demand falls, prices will generally fall alongside with it. We could observe this during the pandemic, as less people wwre traveling and more were staying home, driving down the cost of gasoline to historic lows. 
+  6. Materials 🪵
+  : Includes companies involved with the production, distribution or sourcing of raw materials. This sector is similar to the energy sector, as it is extremely dependent on supply-demand movements within the market. As demand increases, prices increases and vice versa. 
+  7. Consumer Discretionary 🎒
+  : Includes companies who provide consumers with normal or luxury goods, such as entertainment, travel, and hospitality. This sector is heavily dependent on the performance of the economy. During a prosperous economy, conumers will consume more goods within thius sector, however during a recession, consumers will consume less, therefore dirivng down the performanc eof this sector.
+  8. Industrials 🏭
+  : Includes companies involved with transportation or manufacturing goods. Similar to energy and materials, this sector is very reliant on the economy, as with rising demand, prices will increase and vice versa. 
+  9. Utilities 💡
+  : Includes companies who distribute gas, electricity, water, etc. to *households* and *firms*. Similar to healthcare, utlities are almost entirely unaffected by the economy, as they are an essential good. People and businesses need these goods in order to function, thus marking utilities as a very constant performing sector.
+  10. Consumer Staples 🛍️
+  : Includes companies who consumers purchase essential goods from such as groceries, hygenie products, etc... Similar to healthcare and utilities due to the fact that these goods are *essential* to consumers and regardless of the performance of the economy, they will still be consumed at an almost constant rate.
+  11. Communications 📱
+  : Includes companies who provide communication services in some way, such as cellular service providers, phone services, internet providers, or even cable television. This sector is somewhat reliant on the performance of the economy, as consumers will be driven to consume less of the good when prices increase or move to a cheaper option when an ecnomic downturn is present. 
 
 </details>
 
