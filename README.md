@@ -294,7 +294,7 @@ print(df_10)
 df_10.isna().sum()
 ```
 
-By running the following code, we are able to convert the data from the previous dataframe into numeric data and sort the firms by price in descending order in order to give us a new dataframe containing just the top 10 firms. This new dataframe will allow us to look even further into the top performing firms and hopefully draw connections to which sectors may be outperforming others. 
+We faced some challenges with the data. Firstly, the price data was an object datatype rather than a numeric data type(e.g. float, int) which we needed to sort the data in terms of price. Furthermore, the percentage change column had a percentage sign next to each figure and this string value needed to be removed. By running the following code, we are able to convert the data from the previous dataframe into numeric data and sort the firms by price in descending order in order to give us a new dataframe containing just the top 10 firms. This new dataframe will allow us to look even further into the top performing firms and hopefully draw connections to which sectors may be outperforming others. 
 
 #### *Changes in Prices from the Top Firms*
 
