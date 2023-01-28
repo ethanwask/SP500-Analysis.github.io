@@ -451,7 +451,7 @@ By increasing the sample size, there is now a clear distinction in datasets, as 
 </details>
 
 <details>
-  <summary>Exlaining the Factors Behind our Findings 🤔❔</summary>
+  <summary>Explaining the Factors Behind our Findings 🤔❔</summary>
   
 ### *Top Performing Sectors*
 After observing the data, it is clear that healthcare and industrials are performing well. However, why is this? Healthcare has historically been dominant within the index, as within the U.S., prices are exorbitantly high and there will constantly be a need for innovation in treatment. On average, Americans spend over $4.3 trillion a year on healthcare, which is roughly $12,000 per person per year within the U.S. (Centers for Medicare and Medicaid Services). Due to historic trends, this performance is no surprise. For industrials, however, this is a much different story. Coming out of the pandemic, the U.S., including the vast majority ofthe world, faced supply-chain issues. With a shortage of truck drivers, bottleneck issues, and a high demand for goods used in construction caused the prices of these goods (including the valie of the corporations themselves) to skyrocket. Although suply-chain issues have cooled, issues are still prevelant and driving prices to skyrocket. 
