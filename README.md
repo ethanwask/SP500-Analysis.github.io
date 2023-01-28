@@ -1,4 +1,4 @@
-# Exploring the Makeup and Performance of the S&P 500 Index... Is a Recession Looming?
+# Exploring the Makeup and Performance of the S&P 500 Index... Identifying Indicators of a Looming Recession
 
 <details>
   <summary>Focus Problem 🚩</summary>
