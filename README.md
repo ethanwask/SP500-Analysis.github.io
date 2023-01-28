@@ -3,6 +3,8 @@
 <details>
   <summary>Focus Problem 🚩</summary>
 
+## *Focus Problem*
+  
 <img width="1274" alt="Screen Shot 2023-01-25 at 2 43 16 PM" src="https://user-images.githubusercontent.com/118006806/214593322-df7b3887-898c-4ef2-b270-2be5f929ea04.png">
 
 *How could we provide readers with a way to filter thousands of articles that only pertain to the equities listed within the S&P 500 Index and inform less-experienced investors about the makeup of the index?*
@@ -57,6 +59,8 @@ The financial sector is an integral part of the economy and it is what drives th
 
 <details>
   <summary>Justification ⚖️</summary>
+  
+## *Justification* ⚖️
   
 Our project is relevant to both economists, investors, and everyday citizens, as the possibility of a recession is able to impact people on all levels throughout the economy. By giving readers a central hub where articles are able to be drawn while also providing real-time data on the composition and perfomance of the index, we will be able to provide resources to our readers in which the events leading up to either a recession or slow-down will be observable and understood. When trying to understand why the economy is performing the way it is, economists are interested in geopolitical variables and monetary/fiscal policy changes, which are provided through the NYT Articles API. Additionally, both economists and investors will be interested in the perfomance of the S&P 500 Index, as this index provides a reliable gauge on the health of the economy. 
   
@@ -464,6 +468,8 @@ By increasing the sample size, there is now a clear distinction in datasets, as 
 <details>
   <summary>Explaining the Factors Behind our Findings 🤔❔</summary>
   
+## *Explaining the Factors Behind our Findings* 🤔❔
+
 ### *Top Performing Sectors*
 After observing the data, it is clear that healthcare and industrials are performing well. However, why is this? Healthcare has historically been dominant within the index, as within the U.S., prices are exorbitantly high and there will constantly be a need for innovation in treatment. On average, Americans spend over $4.3 trillion a year on healthcare, which is roughly $12,000 per person per year within the U.S. (Centers for Medicare and Medicaid Services). Due to historic trends, this performance is no surprise. For industrials, however, this is a much different story. Coming out of the pandemic, the U.S., including the vast majority ofthe world, faced supply-chain issues. With a shortage of truck drivers, bottleneck issues, and a high demand for goods used in construction caused the prices of these goods (including the valie of the corporations themselves) to skyrocket. Although suply-chain issues have cooled, issues are still prevelant and driving prices to skyrocket. 
   
