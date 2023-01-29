@@ -1,20 +1,24 @@
-# Exploring the Makeup and Performance of the S&P 500 Index... Identifying Indicators of a Looming Recession
+# Utilizing the S&P 500 Index to Identify Indicators of a Looming Recession 
+
+![Economy](https://user-images.githubusercontent.com/118006806/215334934-ee6f035e-20c4-4405-9f8d-6d1c1c6f03b4.jpg)
+
+# Exploring the Makeup and Performance of the S&P 500 Index 
 
 <details>
   <summary>Focus Problem 🚩</summary>
 
-## *Focus Problem*
+## *Focus Problem* 🚩
   
 <img width="1274" alt="Screen Shot 2023-01-25 at 2 43 16 PM" src="https://user-images.githubusercontent.com/118006806/214593322-df7b3887-898c-4ef2-b270-2be5f929ea04.png">
 
-*How could we provide readers with a way to filter thousands of articles that only pertain to the equities listed within the S&P 500 Index and inform less-experienced investors about the makeup of the index?*
+*How could we provide readers with a way to filter thousands of articles that only pertain to the equities listed within the S&P 500 Index and inform less-experienced investors about the makeup of the index? What does our analysis of the index show us about the health of the economy?*
 
 </details>
 
 <details>
   <summary>The S&P 500 Index Explained 🔑</summary>
 
-## *The S&P 500 Index Explained*
+## *The S&P 500 Index Explained* 🔑
 The Standard and Poor's 500 Index is market-capitalization-weighted index of the 500 largest publicly traded U.S. companies. In essence, this weighting system measures companies through multiplying the equity price with shares outstanding. This weighting system is able to provide a "valuation" of these companies, thus putting the 500 most valuable publicly traded companies within the Index. Additionally, the Index is dynamic - meaning it's composition is  *always* changing alongside the market. Some companies may lose enough value to fall out of the index while others may increase their value enough to make their way in. However, it is widely believed within the financial sector that this index is one of the best gauges of the health of the economy due to it's depth and weighting. This depth can be seen through it's representation of various sectors which includes: technology, healthcare, financials, real estate, energy, materials, consumer discretionary, industrials, utilities, consumer staples, and commuications. Because of it's ability to gauge the health of the economy, we found the S&P 500 index to be an important resource to investors and economists when determining the state of the economy. 
 
 </details>
@@ -22,7 +26,7 @@ The Standard and Poor's 500 Index is market-capitalization-weighted index of the
 <details>
   <Summary>The S&P 500 Index Sectors 🔨💰💡</summary>
   
-  ## *Sectors Explained*
+  ## *Sectors Explained* 🔨💰💡
   The S&P 500 Index is made up of the following 11 sectors:
   1. **Technology** 🖥️
   : Includes the development or manufacturing of technology-related goods and services. This can span from software services to hardware such as a laptop or gaming console.
