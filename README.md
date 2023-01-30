@@ -111,11 +111,7 @@ df = pd.json_normalize(r.json()['response']['docs'])
   
   ```
   
-By using "Pandas" 🐼, we are able to display the data into a chart, allowing for a more cleaner and accesible method to viewing the articles pulled that match our query. Now that the article are more organized, we must now convert this data into a CSV file, which will allow us to save our data into a table structured format.
-  
-### *Using Visual Studio Code to Convert Data into a .CSV File*
-  
-  *insert code and images for VSCode*
+By using "Pandas" 🐼, we are able to display the data into a chart, allowing for a more cleaner and accesible method to viewing the articles pulled that match our query.  
   
 ### *Webscraping SlickCharts 📊 for S&P 500 Index Performance 🏋️*
 
