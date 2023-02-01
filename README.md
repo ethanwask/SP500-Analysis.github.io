@@ -253,14 +253,14 @@ By utilizing this code, we are able to output a bar chart that looks like this:
 Alternatively, we can show the proportion of the equities that makeup the S&P 500 Index by using plotnine by creating a donut chart, in which we write the following code within the terminal: 
   
   ```js
-  import squarify
+ import squarify
 import matplotlib.pyplot as plt
 
 # Group the data by sector and count the number of companies in each sector
-sector_count = dfsi.groupby('sector').size().reset_index(name='counts')
+sector_count = df.groupby('Sector').size().reset_index(name='counts')
 
 # Plot the treemap
-squarify.plot(sizes=sector_count['counts'], label=sector_count['sector'], alpha=.7)
+squarify.plot(sizes=sector_count['counts'], label=sector_count['Sector'], alpha=.7)
 
 # Show the plot
 plt.axis('off')
@@ -268,7 +268,7 @@ plt.show()
    ```
 By using Madpoltlib we are able to output a tree map that represents the sector composition that looks like this:
   
-![top 10 tree map](https://user-images.githubusercontent.com/118006806/216030756-d8e5e3cd-18f7-430a-a269-1d07d6ed8a0a.png)
+![tree map of entire index](https://user-images.githubusercontent.com/118006806/216036287-6c6fd915-54d8-4cf3-b8b2-8eaea5060d1c.png)
 
 After observing both prices and the proportion of equities that makeup the various sectors within the index, it is now clear that five sectors dominate the market, which are: technology, industrials, financials, healthcare, and consumer discretionary. This gives us a new persepctive when understanding the market, as due to having more equtiies with higher market capitalization within these five sectors, it is clear that the current macroeconomic environment is allowing for these sectors to grow and the remaining sectors to lag behind.  
 
@@ -320,7 +320,7 @@ print(ggplot(df_10[['Symbol', 'Price Change']], aes(x='Symbol', y='Price Change'
     ylab('Price Change'))
 ```
 
-By using Madplotlib, we are able to create a bar graph displaying the prices of the top 10 firms which looks like:
+By using plotnine, we are able to create a bar graph displaying the prices of the top 10 firms which looks like:
 
 ![bar chart top 10 price changes](https://user-images.githubusercontent.com/118006806/216033461-390bf3fe-f5fc-493e-8c29-499f0ecc00cb.png)
 
@@ -409,28 +409,55 @@ Real Estate           1
 Technology            1
 dtype: int64
   ```
-Now that we have numerical data, we are able to create the charts and structure our data into visualizations. By using Madplotlib again, we will be able to achieve this by writing the following within the terminal:
+Now that we have numerical data, we are able to create the charts and structure our data into visualizations. By using Madplotlib, we will be able to achieve this by writing the following within the terminal:
   
   ```js
-  #Plot this data in a pie chart and a bar chart
-dfsi.groupby('sector').size().plot(kind='bar')
-plt.title("Number of Firms Per Sector, among the top 10 firms")
+ import squarify
+import matplotlib.pyplot as plt
+
+# Group the data by sector and count the number of companies in each sector
+sector_count = dfsi.groupby('sector').size().reset_index(name='counts')
+
+# Plot the treemap
+squarify.plot(sizes=sector_count['counts'], label=sector_count['sector'], alpha=.7)
+
+# Show the plot
+plt.axis('off')
 plt.show()
-dfsi.groupby('sector').size().plot.pie(autopct='%.2f', figsize=(5,5))
-plt.title("Proportion of sectors among the top 10 Firms")
   ```
   
 Which will give us an output of:
   
-![bar chart of top 10](https://user-images.githubusercontent.com/118006806/215081530-b9ccb90b-2166-49f7-8f4b-0598841a7823.png)
+![top 10 tree map](https://user-images.githubusercontent.com/118006806/216037031-df944d49-8283-4832-8662-fba23376c02f.png)
 
-![pie chart of top 10](https://user-images.githubusercontent.com/118006806/215081559-3c0135ee-4323-4152-9c6f-69d2b3499075.png)
+Alternatively, we can create a donut chart in order to give readers an additional sense of the composition of the top 10 equities within the index, in which we will write the following within the terminal:
 
-From this data we can see somewhat of a normal distrubution curve, in which financial services, healthcare, and industrials sectors appear to make up the majority of the index. Although this may show that the majority of these equities are within these three sectors, the sample size proves to be a challenge as 10 equities trying to represent 11 sectors is not an optimal method of trying to find performance. In order to see a more accurate representation, we will increase the sample size to 20, as we do not want to include a majority of the index in order to ensure that we analyze the *top* performers. We will run the same code, however now we will replace the numerical value of "10" for "20" and ger the following outputs:
+ ```js
+ # Group the data by sector and get the size
+grouped_data = dfsi.groupby('sector').size()
+
+# Set the values and labels for the chart
+values = grouped_data.values
+labels = grouped_data.index
+
+# Plot the doughnut chart
+plt.pie(values, labels=labels, startangle=90, counterclock=False, autopct='%1.1f%%')
+centre_circle = plt.Circle((0,0),0.75,color='black', fc='white',linewidth=1.25)
+fig = plt.gcf()
+fig.gca().add_artist(centre_circle)
+plt.axis('equal')  
+plt.title("Proportion of Sectors Among the Top 10 Firms")
+plt.show()
+  ```
+Which will give us an output of:
+
+![donut chart top 10](https://user-images.githubusercontent.com/118006806/216037472-5eccbc65-84e2-474f-be68-55336cdb8d4e.png)
+
+From this data we can see that some sectors dominate others, in which financial services, healthcare, and the industrials sectors appear to make up the majority of the index. Although this may show that the majority of these equities are within these three sectors, the sample size proves to be a challenge as 10 equities trying to represent 11 sectors is not an optimal method of trying to find performance. In order to see a more accurate representation, we will increase the sample size to 20, as we do not want to include a majority of the index in order to ensure that we analyze the *top* performers. We will run the same code, however now we will replace the numerical value of "10" for "20" and ger the following outputs:
   
-  ![bar chart top 20](https://user-images.githubusercontent.com/118006806/215083365-163cfa58-24ed-4774-9eb2-0a36b665e8c0.png)
+![top 20 tree map](https://user-images.githubusercontent.com/118006806/216037827-85a6c132-284f-4ed4-a5c0-0ea076c26ff9.png)
 
-  ![pie chart top 20](https://user-images.githubusercontent.com/118006806/215083407-31964905-f56f-4792-83fc-9edd21c3990d.png)
+![top 20 donut chart](https://user-images.githubusercontent.com/118006806/216037847-027e1aa4-cbdf-42f2-aed0-47f4261e92aa.png)
 
 By increasing the sample size, there is now a clear distinction in datasets, as similar to the dataset prior, both healthcare and industrials sectors contain more equities within the top 20 than any other sector. Additionally, we can see which sectors are underperfomring as real estate, technology, and consumer discretionary seem to be lagging behind the rest. This may suggests that there are currently issues ongoing within the market that are affecting these sectors, which we will dive into next. 
 
