@@ -88,7 +88,7 @@ import json
 
 ### GET ARTICLES MATCHING OUR QUERY ###
 def get_url(q, begin_date, end_date):
-    url = ("https://api.nytimes.com/svc/search/v2/articlesearch.json?q={0}&begin_date={1}&end_date={2}&api-key=GAgkTBB83AC0GwrrTCDTbUxv8R09Dq41".format(q, begin_date, end_date))
+    url = ("https://api.nytimes.com/svc/search/v2/articlesearch.json?q={0}&begin_date={1}&end_date={2}&api-key=(INSERT_API_KEY_HERE".format(q, begin_date, end_date))
     return url
 
 print("Querying NYTimes API...")
