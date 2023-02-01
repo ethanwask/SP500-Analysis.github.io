@@ -170,7 +170,7 @@ By combining these elements, we are able to pull all relevant data from the webs
   
 ### *Further Analysis of the S&P 500 Index*
   
-Now that we have a general understanding of the equities that make up the S&P 500 Index, we wanted to show our readers the various sectors this index covers in order to provide them with an additional understanding of the sectors that are performing well and those that are beginning to falter. By providing information regarding the sectors, we are able to show how some of the supplemental articles regarding geo-political events may influence the markets, more specifically these sectors. In order to find the sectors that makeup the index, we must once again webscrape, however this time we will be using Wikipedia, as the other resources provided fail to state the sectors that form the S&P 500 Index. We are abel to pull this ionformation by opening the terminal and typing:
+Now that we have a general understanding of the equities that make up the S&P 500 Index, we wanted to show our readers the various sectors this index covers in order to provide them with an additional understanding of the sectors that are performing well and those that are beginning to falter, as the performance of different sectors allows us to gauge the health of the economy. In order to find the sectors that makeup the index, we must once again webscrape, however this time we will be using Wikipedia, as the other resources provided fail to state the sectors that form the S&P 500 Index. We are able to pull this information by opening the terminal and typing:
   
 ```js
   
@@ -230,38 +230,47 @@ sector_count
   
 This code will give us the amount of equities within the exchange in each individual sector, which will help us find what we were looking for in the paragraph above. 
   
- ### *Structuring Data Visualizations Using Madplotlib* 📊
+ ### *Structuring Data Visualizations Using Madplotlib & plotnine* 📊
  
-Although we have all relevant information, we still need to provide our readers with visualizations that will display this infomation. Visualizations are crucial to our data analysis as they provide an avenue to analyze data in a clean and concise manner that is able to quickly show patterns or correlations between variables. In order to provide our readers with these visualizations, we will utilize Madplotlib, a plotting library used to analyze data extracted using Python 🐍. First, we will be creating a bar chart using Madplotlib, in which we will write the following code within the terminal:
+Although we have pulled our data, we still need to provide our readers with visualizations that will display this infomation. Visualizations are crucial to our data analysis as they provide an avenue to analyze data in a clean and concise manner that is able to quickly show patterns or correlations between variables. In order to provide our readers with these visualizations, we will utilize Madplotlib and plotnine, plotting libraries used to analyze data extracted using Python 🐍. First, we will be creating a bar chart using plotnine, in which we will write the following code within the terminal in order to get the prices of the top 10 firms:
   
   ```js
-  import matplotlib.pyplot as plt
-sector_count.plot(kind='bar')
-plt.xlabel('Sector')
-plt.ylabel('Number of Firms')
-plt.title('Number of Firms per Sector')
-plt.show()
+ #Creating a bar chart using plotnine
+from plotnine import *
+
+# Create the bar chart using price data
+print(ggplot(df_10[['Symbol', 'Price']], aes(x='Symbol', y='Price')) + \
+    geom_bar(stat='identity') + \
+    ggtitle('Prices of the Shares of the Top 10 Firms') + \
+    xlab('Company') + \
+    ylab('Price'))
    ```
   
 By utilizing this code, we are able to output a bar chart that looks like this:
   
-  ![S P Bar Graph Python](https://user-images.githubusercontent.com/118006806/214340026-4fbbc2f0-e094-45e7-84d1-74b7d371ea03.png)
+![prices of top 10 plotnine](https://user-images.githubusercontent.com/118006806/216029983-68802a02-07ea-47e1-ab80-df6f9f64be84.png)
 
-  
-Alternatively, we can show the proportion of the equities that makeup the S&P 500 Index by using Madplotlib, specifially their pie chart 🥧📊 feature, in which we write the following code within the terminal: 
+Alternatively, we can show the proportion of the equities that makeup the S&P 500 Index by using plotnine by creating a donut chart, in which we write the following code within the terminal: 
   
   ```js
-  import matplotlib.pyplot as plt
+  import squarify
+import matplotlib.pyplot as plt
 
-plt.pie(sector_count, labels=sector_count.index, autopct='%1.1f%%')
-plt.title('Percentage of Firms per Sector')
+# Group the data by sector and count the number of companies in each sector
+sector_count = dfsi.groupby('sector').size().reset_index(name='counts')
+
+# Plot the treemap
+squarify.plot(sizes=sector_count['counts'], label=sector_count['sector'], alpha=.7)
+
+# Show the plot
+plt.axis('off')
 plt.show()
    ```
-By using Madpoltlib we are able to output a pie chart that represents our data that looks like this:
+By using Madpoltlib we are able to output a tree map that represents the sector composition that looks like this:
   
-  ![S P Pie Chart Python](https://user-images.githubusercontent.com/118006806/214339815-86e2a215-ccaa-4dca-a356-fa6470ee7d49.png)
+![top 10 tree map](https://user-images.githubusercontent.com/118006806/216030756-d8e5e3cd-18f7-430a-a269-1d07d6ed8a0a.png)
 
-After seeing the proportion of equities that makeup the various sectors within the index, it is now clear that five sectors dominate the market, which are: technology, industrials, financials, healthcare, and consumer discretionary. This gives us a new persepctive when understanding the market, as due to having more equtiies with higher market capitalization within these five sectors, it is clear that the current macroeconomic environment is allowing for these sectors to grow. Now, with this information, when seeing a specific ticker associated with the S&P 500 Index within the NYT Articles that were webscraped, there can be an understanding of the current market share that the equity is within. 
+After observing both prices and the proportion of equities that makeup the various sectors within the index, it is now clear that five sectors dominate the market, which are: technology, industrials, financials, healthcare, and consumer discretionary. This gives us a new persepctive when understanding the market, as due to having more equtiies with higher market capitalization within these five sectors, it is clear that the current macroeconomic environment is allowing for these sectors to grow and the remaining sectors to lag behind.  
 
 ### *Analyzing the Top 10 Firms*
 
@@ -294,86 +303,48 @@ print(df_10)
 df_10.isna().sum()
 ```
 
-We faced some challenges with the data. Firstly, the price data was an object datatype rather than a numeric data type(e.g. float, int) which we needed to sort the data in terms of price. Furthermore, the percentage change column had a percentage sign next to each figure and this string value needed to be removed. By running the following code, we are able to convert the data from the previous dataframe into numeric data and sort the firms by price in descending order in order to give us a new dataframe containing just the top 10 firms. This new dataframe will allow us to look even further into the top performing firms and hopefully draw connections to which sectors may be outperforming others. 
+We faced some challenges with the data. Firstly, the price data was an object datatype rather than a numeric data type (e.g. float, int) which we needed to sort the data in terms of price. Furthermore, the percentage change column had a percentage sign next to each figure and this string value needed to be removed. By running the following code, we are able to convert the data from the previous dataframe into numeric data and sort the firms by price in descending order in order to give us a new dataframe containing just the top 10 firms. This new dataframe will allow us to look even further into the top performing firms and hopefully draw connections to which sectors may be outperforming others. 
 
 #### *Changes in Prices from the Top Firms*
 
-In order to gauge the health of the economy, analyzing the discrepencies in prices is vital to be able to understand how volatile the market is and if there are a significant amount of firms exhibiting decreases in value, there is some indication that the market is eithe underperfomring for that day, or if it extends for a brief period, a recession may be looming. 
+In order to gauge the health of the economy, we must build off of the data we obtained regarding the top 10 equities' price by analyzing the discrepencies in prices. Observing the changes in prices is vital to be able to understand how volatile the market. Volatility suggests that there is a lot of activity within the market (i.e. significant amounts of buying and selling) which suggests something either *bullish* or *bearish* is happening within the markets. If many of these firms within a cyclical sector are exhbiting negative returns, this suggests a recession may be on the way, whereas if there are positive returns for firms within a non-cyclical sector, this may also suggest that a ression is on it's way. The only instance in which we can definitively say that an economy is growing are when cyclical sectors are performing well, as their performnace is tied to the health of the economy. 
 
-To observe this, we must find the current prices of the top 10 firms and be able to visualize this data through graphs. To do so, we will once again be using Madplotlib to visually display our findings and type the following within the terminal: 
+To observe this, we must find and display the change in prices of the top 10 firms. To do so, we will once again be using plotnine to visually display our findings and type the following within the terminal: 
 
 ```js
-# Create a list from the price and symbol column in the DataFrame
-column_name = 'Price'
-column_list_price = df_10[column_name].tolist()
-top_firm_price = column_list_price[:10]
-print(top_firm_price)
-[799.2, 740.18, 734.3, 716.68, 695.73, 581.2, 574.26, 567.53, 502.62, 502.12]
-column_name = 'Symbol'
-column_list_symbol = df_10[column_name].tolist()
-top_firm_symbol = column_list_symbol[:10]
-print(top_firm_symbol)
-['ORLY', 'REGN', 'BLK', 'EQIX', 'TDG', 'AVGO', 'TMO', 'GWW', 'HUM', 'MSCI']
-#Invert the list, so prices are in ascending order
-top_price = top_firm_price[::-1]
-#Invert the firm's symbols to match their prices
-top_firms = top_firm_symbol[::-1]
-# Create a bar chart displaying the prices for the Top Firms
-plt.bar(top_firms,top_price, color='red')
-plt.xlabel('Firms')
-plt.ylabel('Price')
-plt.title('Prices of the shares of the Top Firms')
+#Creating a bar chart for the price change 
+print(ggplot(df_10[['Symbol', 'Price Change']], aes(x='Symbol', y='Price Change')) + \
+    geom_bar(stat='identity') + \
+    ggtitle('Price Change of the Shares of the Top 10 Firms') + \
+    xlab('Firm') + \
+    ylab('Price Change'))
 ```
 
 By using Madplotlib, we are able to create a bar graph displaying the prices of the top 10 firms which looks like:
 
-![Prices of the Shares of the Top Firms](https://user-images.githubusercontent.com/118006806/214691598-03a24748-7372-483a-89a9-0b662cbbbc57.png)
+![bar chart top 10 price changes](https://user-images.githubusercontent.com/118006806/216033461-390bf3fe-f5fc-493e-8c29-499f0ecc00cb.png)
 
-Now that we know the top 10 firms within the index as well as their prices, we now want to be able to observe any price discrepencies these equities may have experienced, as with this information we will be able to see whether or not these firms are underperforming even as the top performers. 
-  
-To structure this data into a chart, we will type the following into the terminal: 
-  
-```js
-  #Create a list from the price change column
-column_name = 'Chg'
-column_list_chg = df_10[column_name].tolist()
-top_firm_chg = (column_list_chg[:10])[::-1]
-print(top_firm_chg)
-[-17.72, 2.27, -3.31, -6.46, -3.83, 1.48, -2.94, -17.77, 12.71, 0.11]
-#Make a bar chart showing the price change for each firm
-plt.bar(top_firms,top_firm_chg)
-plt.xlabel('Firms')
-plt.ylabel('Price Change')
-plt.title('Price Changes of the shares of the Top Firms')
-  ```
-
-By changing the axis labels and analyzing the price changes, we are able to see any discrepencies in prices with these firms, which looks like:
-  
-  ![Price change of firm](https://user-images.githubusercontent.com/118006806/214693008-9c395078-bb6f-448c-93d4-3a14e7e28f17.png)
+Now that we are able to observe the price discrepencies within the top 10, we are able to see how the top equities are holding up. 
 
 Although we may be able to see price changes, percent changes will be able to effectively display these discrepencies relative to the equities' existing prior price point. This will help us gauge the extent to which the proportion of it's value has either *fallen* or *risen*. 
   
-To find this, we will once again use Madplotlib to create a bar chart by writing the following within the terminal:
+To find this, we will once again use plotnine to create a plot chart by writing the following within the terminal:
   
   ```js
- #Make a list using the percentage change column
-column_name = '% Chg'
-column_list_chg = df_10[column_name].tolist()
-top_firm_per_chg = (column_list_chg[:10])[::-1]
-print(top_firm_per_chg)
-['-3.41', '0.45', '-0.58', '-1.11', '-0.66', '0.21', '-0.41', '-2.36', '1.75', '0.01']
-#Make a bar chart for the percentage change in the price of each firm
-plt.bar(top_firms,top_firm_chg,color='green')
-plt.xlabel('Firms')
-plt.ylabel('Percentage Change')
-plt.title('Percentage Change in the Price of the shares of the Top Firms')
+#chart to show percentage change
+print(ggplot(df_10[['Symbol', 'Percentage Change']], aes(x='Symbol', y='Percentage Change')) + \
+    geom_count(stat='identity') + \
+    scale_y_discrete() + \
+    ggtitle('Percentage Change in the Price of the Shares of the Top 10 Firms') + \
+    xlab('Company') + \
+    ylab('Price'))
   ```
   
 Which outputs: 
   
-  ![Price change of firm %](https://user-images.githubusercontent.com/118006806/214695086-87e6a5e2-ac6b-4907-8723-48a17643c983.png)
+![plot chart](https://user-images.githubusercontent.com/118006806/216034945-a9b24f93-3c8a-44f7-a37d-5ff6e6092e2d.png)
 
-From this we can now be able to effectively show the discrepencies in prices relative to the firms prior price. Through this visualization, it is clear that there is some slowdown or even decrease in growth, as the majority of these firms are exhibiting negative movements in prices. 
+From this we can now be able to effectively show the discrepencies in prices relative to the firms prior price. Through this visualization, it is clear that there is a very contrasting market, as many firms are exhibiting positive growth, while others are experiencing a slowdown or even negative price movements. 
   
 #### *Sector Composition of the Top 10 Firms*
   
