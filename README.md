@@ -38,7 +38,7 @@ The Standard and Poor's 500 Index is market-capitalization-weighted index of the
   : Includes realty agencies, property management companies, and real-estate investment trusts (REITs). This sector is typically not affected by the perfomance of stocks within the market, however they are incredibly sensitive to increases in interest rates. As interest rates rise, consumption and demand for real-estate typically falls, thus decreasing the sectors performance. 
   5. **Energy** ⚡
   : Includes the production and distribution of energy. This can span from solar power, electricity, gas, or even off-shore wind turbines. This sector is *very* sensitive to economic and supply-demand movements, as when demand falls, prices will generally fall alongside with it. We could observe this during the pandemic, as less people wwre traveling and more were staying home, driving down the cost of gasoline to historic lows. 
-  6. **Materials** 🧱
+  6. **Materials** 🪵
   : Includes companies involved with the production, distribution or sourcing of raw materials. This sector is similar to the energy sector, as it is extremely dependent on supply-demand movements within the market. As demand increases, prices increases and vice versa. 
   7. **Consumer Discretionary** 🎒
   : Includes companies who provide consumers with normal or luxury goods, such as entertainment, travel, and hospitality. This sector is heavily dependent on the performance of the economy. During a prosperous economy, conumers will consume more goods within thius sector, however during a recession, consumers will consume less, therefore dirivng down the performanc eof this sector.
