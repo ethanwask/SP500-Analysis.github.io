@@ -170,7 +170,7 @@ By combining these elements, we are able to pull all relevant data from the webs
   
 ### *Further Analysis of the S&P 500 Index*
   
-Now that we have a general understanding of the equities that make up the S&P 500 Index, we wanted to show our readers the various sectors this index covers in order to provide them with an additional understanding of the sectors that are performing well and those that are beginning to falter, as the performance of different sectors allows us to gauge the health of the economy. In order to find the sectors that makeup the index, we must once again webscrape, however this time we will be using Wikipedia, as the other resources provided fail to state the sectors that form the S&P 500 Index. We are able to pull this information by opening the terminal and typing:
+Now that we have a general understanding of the equities that make up the S&P 500 Index, we want to show our readers the various sectors this index covers. This will provide them with an additional understanding of the sectors that are performing well and those that are beginning to falter, as the performance of different sectors allows us to gauge the health of the economy. In order to find the sectors that makeup the index, we must once again webscrape; however, this time we will be using Wikipedia, since the other resources failed to state the sectors that form the S&P 500 Index. We are able to pull this information by opening the terminal and typing:
   
 ```js
   
