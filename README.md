@@ -268,6 +268,17 @@ By using Matplotlib we are able to output a tree map that represents the sector 
   
 ![tree map of entire index](https://user-images.githubusercontent.com/118006806/216036287-6c6fd915-54d8-4cf3-b8b2-8eaea5060d1c.png)
 
+To portray the specific percentages that each sector makes up in the index, we can use a pie chart using the following code:
+
+```js
+plt.pie(sector_count, labels=sector_count.index, autopct='%1.1f%%')
+plt.title('Percentage of Firms per Sector')
+plt.show()
+   ```
+This allows us to show the sector breakdown of the index more clearly
+![sector pie chart](https://user-images.githubusercontent.com/118006698/216403223-ebe15a56-2403-4e7b-8bba-c7d2a70ab012.png)
+  
+
 After observing both prices and the proportion of equities that makeup the various sectors within the index, it is now clear that five sectors dominate the market, which are: technology, industrials, financials, healthcare, and consumer discretionary. This gives us a new persepctive when understanding the market, as due to having more equtiies with higher market capitalization within these five sectors, it is clear that the current macroeconomic environment is allowing for these sectors to grow and the remaining sectors to lag behind.  
 
 ### *Analyzing the Top 10 Firms*
