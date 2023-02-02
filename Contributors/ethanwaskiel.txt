@@ -2,6 +2,6 @@ ethan-waskiel
 
 *Contributions*
 
-1. READme text & structure
+1. README.md text & structure
 2. Code to webscrape the NYT Articles API
 3. Code to webscrape data from SlickCharts
