@@ -248,7 +248,7 @@ By utilizing this code, we are able to output a bar chart that looks like this:
   
 ![barchart](https://user-images.githubusercontent.com/118006698/216400673-2e53e548-cb8a-4781-9c4c-75089bd4c7da.png)
 
-Alternatively, we can show the proportion of the equities that makeup the S&P 500 Index by using plotnine by creating a donut chart, in which we write the following code within the terminal: 
+Alternatively, we can show the proportion of the equities that makeup the S&P 500 Index by using plotnine by creating a tree map chart, in which we write the following code within the terminal: 
   
   ```js
  import squarify
@@ -264,7 +264,7 @@ squarify.plot(sizes=sector_count['counts'], label=sector_count['Sector'], alpha=
 plt.axis('off')
 plt.show()
    ```
-By using Madpoltlib we are able to output a tree map that represents the sector composition that looks like this:
+By using Matplotlib we are able to output a tree map that represents the sector composition that looks like this:
   
 ![tree map of entire index](https://user-images.githubusercontent.com/118006806/216036287-6c6fd915-54d8-4cf3-b8b2-8eaea5060d1c.png)
 
