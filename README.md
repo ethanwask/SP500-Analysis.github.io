@@ -232,18 +232,16 @@ This code will give us the amount of equities within the exchange in each indivi
   
  ### *Structuring Data Visualizations Using Madplotlib & plotnine* 📊
  
-Although we have pulled our data, we still need to provide our readers with visualizations that will display this infomation. Visualizations are crucial to our data analysis as they provide an avenue to analyze data in a clean and concise manner that is able to quickly show patterns or correlations between variables. In order to provide our readers with these visualizations, we will utilize Madplotlib and plotnine, plotting libraries used to analyze data extracted using Python 🐍. First, we will be creating a bar chart using plotnine, in which we will write the following code within the terminal in order to get the prices of the top 10 firms:
+Although we have pulled our data, we still need to provide our readers with visualizations that will display this infomation. Visualizations are crucial to our data analysis as they provide an avenue to analyze data in a clean and concise manner that is able to quickly show patterns or correlations between variables. In order to provide our readers with these visualizations, we will utilize Madplotlib and plotnine, plotting libraries used to analyze data extracted using Python 🐍. First, using the following code, we are able to portray the number of firms per sector in the index.
   
   ```js
- #Creating a bar chart using plotnine
-from plotnine import *
-
-# Create the bar chart using price data
-print(ggplot(df_10[['Symbol', 'Price']], aes(x='Symbol', y='Price')) + \
-    geom_bar(stat='identity') + \
-    ggtitle('Prices of the Shares of the Top 10 Firms') + \
-    xlab('Company') + \
-    ylab('Price'))
+ #Creating a bar chart using matplotlib
+import matplotlib.pyplot as plt
+sector_count.plot(kind='bar')
+plt.xlabel('Sector')
+plt.ylabel('Number of Firms')
+plt.title('Number of Firms per Sector')
+plt.show()
    ```
   
 By utilizing this code, we are able to output a bar chart that looks like this:
@@ -303,7 +301,25 @@ print(df_10)
 df_10.isna().sum()
 ```
 
-We faced some challenges with the data. Firstly, the price data was an object datatype rather than a numeric data type (e.g. float, int) which we needed to sort the data in terms of price. Furthermore, the percentage change column had a percentage sign next to each figure and this string value needed to be removed. By running the following code, we are able to convert the data from the previous dataframe into numeric data and sort the firms by price in descending order in order to give us a new dataframe containing just the top 10 firms. This new dataframe will allow us to look even further into the top performing firms and hopefully draw connections to which sectors may be outperforming others. 
+We faced some challenges with the data. Firstly, the price data was an object datatype rather than a numeric data type (e.g. float, int) which we needed to sort the data in terms of price. Furthermore, the percentage change column had a percentage sign next to each figure and this string value needed to be removed. By running the following code, we are able to convert the data from the previous dataframe into numeric data and sort the firms by price in descending order in order to give us a new dataframe containing just the top 10 firms. This new dataframe will allow us to look even further into the top performing firms and hopefully draw connections to which sectors may be outperforming others. Using this dataframe and plotnine, we are able to offer a visualisation of the price data of these top 10 firms using the following code.
+
+  ```js
+ #Creating a bar chart using plotnine
+from plotnine import *
+
+# Create the bar chart using price data
+print(ggplot(df_10[['Symbol', 'Price']], aes(x='Symbol', y='Price')) + \
+    geom_bar(stat='identity') + \
+    ggtitle('Prices of the Shares of the Top 10 Firms') + \
+    xlab('Company') + \
+    ylab('Price'))
+   ```
+  
+By utilizing this code, we are able to output a bar chart that looks like this:
+  
+![prices of top 10 plotnine](https://user-images.githubusercontent.com/118006806/216029983-68802a02-07ea-47e1-ab80-df6f9f64be84.png)
+
+
 
 #### *Changes in Prices from the Top Firms*
 
