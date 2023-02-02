@@ -246,7 +246,7 @@ plt.show()
   
 By utilizing this code, we are able to output a bar chart that looks like this:
   
-![prices of top 10 plotnine](https://user-images.githubusercontent.com/118006806/216029983-68802a02-07ea-47e1-ab80-df6f9f64be84.png)
+![sector count](![barchart](https://user-images.githubusercontent.com/118006698/216400673-2e53e548-cb8a-4781-9c4c-75089bd4c7da.png)
 
 Alternatively, we can show the proportion of the equities that makeup the S&P 500 Index by using plotnine by creating a donut chart, in which we write the following code within the terminal: 
   
