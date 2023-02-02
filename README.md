@@ -78,7 +78,7 @@ Our project is relevant to both economists, investors, and everyday citizens, as
 By using the New York Times API, we will be able to provide readers with both quantitative and qualitative resources to complement each other. Through using New York Times' "Market Overview" section, readers will be able to observe the quantitiative side of the market, observing the perfomance of the various sectors and individual equities within the S&P 500 Index. Through the use of the New York Times Articles API, readers will be provided with an assortment of articles between January 1st, 2022 and March 31st, 2023 (end of Q1), in order to gain a general understanding of why the market is where it's at in terms of perfomance and overall economic health. As a recession looms, many people who are not necessarily up to date on the markets will be able to obtain a brief understanding of the events leading up to the state of the global economy now. 
 
 ### *Preliminary Challenges* 🏃
-Before choosing our data sources, we had to identify and address several problems that ultimately led to the evolution of our project. The first problem that we encountered was the structure of the S&P 500 Index itself, where U.S.-listed equities within the Index change daily according to each corporations' market capitalization. This means that if the value of a corporation drops enough, they can be replaced with the next largest corporation by market capitalization. This poses a problem as there is simply too much volatility in the market, meaning that there is so much movement that it is extremely difficult to collect and analyze real-time data as the Index is dynamic. This led us to morph our project into creating a "snapshot" of the Index's performance over the a window of about 1.25 years (Jan. 1st 2022 to March 31st 2023). This snapshow would help us give the reader a sense of the *overall* health of the economy, rather than just one Index within the exchange. As many large corporations are driving the global economy, analyzing the health of these corporations could help give the reader a general sense of how the economy is shaping, as within big tech, we are now seeing a wave of mass-layoffs that haven't been seen since the 2008 global financial crisis. This 1.25 year snapshot will allow readers to see some of the events that have led up to the state of the global economy, whether it's interest rate hikes, inflation, or even corporations missing EPS (earnings per share) expectations, these variables will be accessible to the reader and help give some underlying context on the matter. The second major challenge we faced were the data sources, as we orignially planned on using Kaggle, a subsidiary of Google, however after researching the reliability of this resource, we decided to not use Kaggle as we wanted to provide readers with accurate and up-to-date information such as an accredited news source such as NYT and SlickCharts, who provide real times data on these sources. In addition to SlickCharts, in order to obtain information on the various sectors that make up the S&P 500 Index, we will be using Wikipedia, as they provide real-time data on the index with sector information about each equity that will be useful when analyzing the makeup of the index.
+Before choosing data sources, we had to identify and address several problems that ultimately led to the evolution of our project. The first problem that we encountered was the structure of the S&P 500 Index itself, where U.S.-listed equities within the index change daily according to each corporations' market capitalization. This means that if the value of a corporation drops enough, they can be replaced with the next largest corporation by market capitalization. Ultimately, the S&P 500 Index evolves based on the preformance of the companies. This poses a problem as there is simply too much volatility in the market. Therfore, there is so much movement that it is extremely difficult to collect and analyze real-time data as the index is dynamic. This led us to morph our project into creating a "snapshot" of the index's performance over the a window of approximately 1.25 years (Jan. 1st 2022 to March 31st 2023). This snapshow would help us provide the reader a sense of the *overall* health of the economy, rather than just one index within the exchange. As many large corporations are driving the global economy, analyzing the health of these corporations could help give the reader a general sense of how the economy is shaping, as within big tech, we are now seeing a wave of mass-layoffs that haven't been seen since the 2008 global financial crisis. This 1.25 year snapshot will allow readers to see some of the events that have led up to the state of the global economy, whether it's interest rate hikes, inflation, or even corporations missing EPS (earnings per share) expectations. These variables will be accessible to the reader and help give some underlying context on the matter. The second major challenge we faced were the data sources, as we orignially planned on using Kaggle, a subsidiary of Google. However after researching the reliability of this resource, we decided to not use Kaggle because we wanted to provide readers with accurate and up-to-date information. Instead, accredited news sources such as NYT and SlickCharts were utilized, which provide real-time data. In addition to SlickCharts, in order to obtain information on the various sectors that make up the S&P 500 Index, we will be using Wikipedia, as it provides real-time data on the index with sector information regarding each equity, which is useful when analyzing the makeup of the index.
 
 ### *Snippets of Code Used to Search API For Articles Containing S&P 500* 👨‍💻
  
@@ -232,23 +232,25 @@ This code will give us the amount of equities within the exchange in each indivi
   
  ### *Structuring Data Visualizations Using Madplotlib & plotnine* 📊
  
-Although we have pulled our data, we still need to provide our readers with visualizations that will display this infomation. Visualizations are crucial to our data analysis as they provide an avenue to analyze data in a clean and concise manner that is able to quickly show patterns or correlations between variables. In order to provide our readers with these visualizations, we will utilize Madplotlib and plotnine, plotting libraries used to analyze data extracted using Python 🐍. First, using the following code, we are able to portray the number of firms per sector in the index.
+Although we have pulled our data, we still need to provide our readers with visualizations that will display this infomation. Visualizations are crucial to our data analysis as they provide an avenue to analyze data in a clean and concise manner that is able to quickly show patterns or correlations between variables. In order to provide our readers with these visualizations, we will utilize Madplotlib and plotnine, plotting libraries used to analyze data extracted using Python 🐍. First, we will be creating a bar chart using plotnine, in which we will write the following code within the terminal in order to get the prices of the top 10 firms:
   
   ```js
- #Creating a bar chart using matplotlib
-import matplotlib.pyplot as plt
-sector_count.plot(kind='bar')
-plt.xlabel('Sector')
-plt.ylabel('Number of Firms')
-plt.title('Number of Firms per Sector')
-plt.show()
+ #Creating a bar chart using plotnine
+from plotnine import *
+
+# Create the bar chart using price data
+print(ggplot(df_10[['Symbol', 'Price']], aes(x='Symbol', y='Price')) + \
+    geom_bar(stat='identity') + \
+    ggtitle('Prices of the Shares of the Top 10 Firms') + \
+    xlab('Company') + \
+    ylab('Price'))
    ```
   
 By utilizing this code, we are able to output a bar chart that looks like this:
   
-![barchart](https://user-images.githubusercontent.com/118006698/216400673-2e53e548-cb8a-4781-9c4c-75089bd4c7da.png)
+![prices of top 10 plotnine](https://user-images.githubusercontent.com/118006806/216029983-68802a02-07ea-47e1-ab80-df6f9f64be84.png)
 
-Alternatively, we can show the proportion of the equities that makeup the S&P 500 Index by using plotnine by creating a tree map chart, in which we write the following code within the terminal: 
+Alternatively, we can show the proportion of the equities that makeup the S&P 500 Index by using plotnine by creating a donut chart, in which we write the following code within the terminal: 
   
   ```js
  import squarify
@@ -264,20 +266,9 @@ squarify.plot(sizes=sector_count['counts'], label=sector_count['Sector'], alpha=
 plt.axis('off')
 plt.show()
    ```
-By using Matplotlib we are able to output a tree map that represents the sector composition that looks like this:
+By using Madpoltlib we are able to output a tree map that represents the sector composition that looks like this:
   
 ![tree map of entire index](https://user-images.githubusercontent.com/118006806/216036287-6c6fd915-54d8-4cf3-b8b2-8eaea5060d1c.png)
-
-To portray the specific percentages that each sector makes up in the index, we can use a pie chart using the following code:
-
-```js
-plt.pie(sector_count, labels=sector_count.index, autopct='%1.1f%%')
-plt.title('Percentage of Firms per Sector')
-plt.show()
-   ```
-This allows us to show the sector breakdown of the index more clearly
-![sector pie chart](https://user-images.githubusercontent.com/118006698/216403223-ebe15a56-2403-4e7b-8bba-c7d2a70ab012.png)
-  
 
 After observing both prices and the proportion of equities that makeup the various sectors within the index, it is now clear that five sectors dominate the market, which are: technology, industrials, financials, healthcare, and consumer discretionary. This gives us a new persepctive when understanding the market, as due to having more equtiies with higher market capitalization within these five sectors, it is clear that the current macroeconomic environment is allowing for these sectors to grow and the remaining sectors to lag behind.  
 
@@ -312,25 +303,7 @@ print(df_10)
 df_10.isna().sum()
 ```
 
-We faced some challenges with the data. Firstly, the price data was an object datatype rather than a numeric data type (e.g. float, int) which we needed to sort the data in terms of price. Furthermore, the percentage change column had a percentage sign next to each figure and this string value needed to be removed. By running the following code, we are able to convert the data from the previous dataframe into numeric data and sort the firms by price in descending order in order to give us a new dataframe containing just the top 10 firms. This new dataframe will allow us to look even further into the top performing firms and hopefully draw connections to which sectors may be outperforming others. Using this dataframe and plotnine, we are able to offer a visualisation of the price data of these top 10 firms using the following code.
-
-  ```js
- #Creating a bar chart using plotnine
-from plotnine import *
-
-# Create the bar chart using price data
-print(ggplot(df_10[['Symbol', 'Price']], aes(x='Symbol', y='Price')) + \
-    geom_bar(stat='identity') + \
-    ggtitle('Prices of the Shares of the Top 10 Firms') + \
-    xlab('Company') + \
-    ylab('Price'))
-   ```
-  
-By utilizing this code, we are able to output a bar chart that looks like this:
-  
-![prices of top 10 plotnine](https://user-images.githubusercontent.com/118006806/216029983-68802a02-07ea-47e1-ab80-df6f9f64be84.png)
-
-
+We faced some challenges with the data. Firstly, the price data was an object datatype rather than a numeric data type (e.g. float, int) which we needed to sort the data in terms of price. Furthermore, the percentage change column had a percentage sign next to each figure and this string value needed to be removed. By running the following code, we are able to convert the data from the previous dataframe into numeric data and sort the firms by price in descending order in order to give us a new dataframe containing just the top 10 firms. This new dataframe will allow us to look even further into the top performing firms and hopefully draw connections to which sectors may be outperforming others. 
 
 #### *Changes in Prices from the Top Firms*
 
